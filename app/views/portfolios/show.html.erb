@@ -11,3 +11,7 @@
 <% @portfolio_item.technologies.each do |t| %>
 <p><%= t.name %></p>
 <% end %>
+
+<hr>
+<% #show ActionController::Parameters 'What is going on in the background?' Controller takes ID from URL (routes.rb), calls show action, passes it to @portfolio_item (portf_controller.rb) which is called in show.html.erb  %>
+<% #= params.inspect %>
