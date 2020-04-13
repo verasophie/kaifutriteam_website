@@ -18,18 +18,16 @@
   <body>
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" >
           <!-- <p class="notice"><%= notice %></p> 
           <p class="alert"><%= alert %></p> -->
 
           <% # Navigation Bar %>
           <%= render "shared/application_nav" %>
-    
-          <%= login_helper %>
 
           <%= yield %>
 
-          <%= set_copyright %>
+          <%= render "shared/application_footer" %>
 
           <%= source_helper("application") %>
         </div>
