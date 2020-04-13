@@ -10,11 +10,12 @@ module CurrentUserConcern
   end
 
   def guest_user
-    OpenStruct.new(name: "Dude",
-                  first_name: "Dude",
-                  last_name: "Dude",
-                  email: "guest@user.com"
-                  )
+    guest = GuestUser.new
+    guest.name = "Dude"
+    guest.first_name = "Dude"
+    guest.last_name = "Dude"
+    guest.email = "guest@user.com"
+    guest # returns full guest object, otherwise only email would be returned
   end
 end
 

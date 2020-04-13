@@ -1,5 +1,5 @@
 <h1>Portfolio Items</h1>
 
-<%= link_to "Create New Item", new_portfolio_path %>
+<%= link_to "Create New Item", new_portfolio_path if logged_in?(:site_admin) %>
 <% # manually say, that it's a partial; collection tells Rails the type %>
 <%= render partial: 'portfolio_item', collection: @portfolio_items %>
