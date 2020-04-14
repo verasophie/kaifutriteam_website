@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def set_copyright
-    VerasViewTool::Renderer.copyright 'Vera', 'Welcome to my page!'
+    VerasViewTool::Renderer.copyright 'Kaifu Tri Team', 'Do what you love. Together.'
   end
 
 end
