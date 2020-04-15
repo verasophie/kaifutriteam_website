@@ -1,6 +1,9 @@
 <div class="col-md-8 blog-main">
+  <%= paginate @blogs %>
 
   <%= render @blogs %>
+
+  <%= paginate @blogs %>
 
   <nav class="blog-pagination">
     <a class="btn btn-outline-primary" href="#">vor</a>
