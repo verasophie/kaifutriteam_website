@@ -3,12 +3,7 @@
 
   <%= render @blogs %>
 
-  <%= paginate @blogs %>
-
-  <nav class="blog-pagination">
-    <a class="btn btn-outline-primary" href="#">vor</a>
-    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">zurück</a>
-  </nav>
+  <%= paginate @blogs, class: "btn btn-sm" %>
 </div>
 
 
