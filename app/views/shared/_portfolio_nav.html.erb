@@ -13,6 +13,7 @@
             <li><%= link_to "Über uns", about_me_path, class: "text-white" %></li>
             <li><%= link_to "Kontakt", contact_path, class: "text-white" %></li>
             <li><%= link_to "Blog", blogs_path, class: "text-white" %></li>
+            <li><%= link_to "Neuer Beitrag", new_portfolio_path, class: "text-white" if logged_in?(:site_admin) %></li>
             <li><%= login_helper 'text-white' %></li>
           </ul>
         </div>
