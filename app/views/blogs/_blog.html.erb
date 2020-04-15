@@ -1,9 +1,32 @@
-<tr>
-  <td><%= blog.title.upcase %></td>
-  <td><%= distance_of_time_in_words(blog.created_at, Time.now) %> ago</td>
-  <td><%= blog.body %></td>
-  <td><%= link_to blog.status, toggle_status_blog_path(blog) %></td>            
-  <td><%= link_to 'Show', blog %></td>
-  <td><%= link_to 'Edit', edit_blog_path(blog) if logged_in?(:site_admin) %></td>
-  <td><%= link_to 'Delete', blog, method: :delete, data: { confirm: 'Are you sure?' } if logged_in?(:site_admin) %></td>      
-</tr>
+<div class="blog-post">
+  <h2 class="p-3 blog-post-title"><%= link_to blog.title, blog %></h2>
+  <p class="blog-post-meta">Published <%= distance_of_time_in_words(blog.created_at, Time.now) %> ago</p>
+  <% if logged_in?(:site_admin) %>
+    <p class="blog-post-meta" >
+      <%= link_to blog.status, toggle_status_blog_path(blog) %> /
+      <%= link_to 'edit', edit_blog_path(blog) %> /
+      <%= link_to 'delete', blog, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </p>
+  <% end %> 
+
+  <p><%= blog.body %></p>
+  
+  <!--<p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, images, and code are all supported.</p>
+  <hr>
+  <p>Cum sociis natoque penatibus et magnis <a href="#">dis parturient montes</a>.</p>
+  <blockquote>
+    <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong>.</p>
+  </blockquote>
+  <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+  <h2>Heading</h2>
+  <h3>Sub-heading</h3>
+  <pre><code>Example code block</code></pre>
+  <ul>
+    <li>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</li>
+    <li>Donec id elit non mi porta gravida at eget metus.</li>
+    <li>Nulla vitae elit libero, a pharetra augue.</li>
+  </ul>
+  <ol>
+    <li>Vestibulum id ligula porta felis euismod semper.</li>
+  </ol> -->
+</div><!-- /.blog-post -->
