@@ -39,3 +39,17 @@ footer p {
 .portfolio-form {
   padding: 1rem
 }
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.icon-ktt {
+  background-image : url(/Users/verasophie/Documents/RubyonRails/Kaifutriteamlogo-4.png);
+  background-size: cover;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+}
