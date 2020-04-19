@@ -157,7 +157,7 @@ var sortable = (function () {
        */
       Store.prototype.setData = function (key, value) {
           if (typeof key !== 'string') {
-              throw new Error('The key must be a string.');
+              throw new Error("The key must be a string.");
           }
           this._data.set(key, value);
       };
@@ -169,7 +169,7 @@ var sortable = (function () {
        */
       Store.prototype.getData = function (key) {
           if (typeof key !== 'string') {
-              throw new Error('The key must be a string.');
+              throw new Error("The key must be a string.");
           }
           return this._data.get(key);
       };
@@ -181,7 +181,7 @@ var sortable = (function () {
        */
       Store.prototype.deleteData = function (key) {
           if (typeof key !== 'string') {
-              throw new Error('The key must be a string.');
+              throw new Error("The key must be a string.");
           }
           return this._data.delete(key);
       };
@@ -454,26 +454,6 @@ var sortable = (function () {
 
   /* eslint-env browser */
   /**
-   * Get width of an element including padding
-   * @param {HTMLElement} element an dom element
-   */
-  var _getElementWidth = (function (element) {
-      if (!(element instanceof HTMLElement)) {
-          throw new Error('You must provide a valid dom element');
-      }
-      // get calculated style of element
-      var style = window.getComputedStyle(element);
-      // pick applicable properties, convert to int and reduce by adding
-      return ['width', 'padding-left', 'padding-right']
-          .map(function (key) {
-          var int = parseInt(style.getPropertyValue(key), 10);
-          return isNaN(int) ? 0 : int;
-      })
-          .reduce(function (sum, value) { return sum + value; });
-  });
-
-  /* eslint-env browser */
-  /**
    * get handle or return item
    * @param {Array<HTMLElement>} items
    * @param {string} selector
@@ -609,8 +589,7 @@ var sortable = (function () {
       maxItems: 0,
       itemSerializer: undefined,
       containerSerializer: undefined,
-      customDragImage: null,
-      orientation: 'vertical'
+      customDragImage: null
   };
 
   /**
@@ -692,7 +671,6 @@ var sortable = (function () {
    */
   var dragging;
   var draggingHeight;
-  var draggingWidth;
   /*
    * Keeps track of the initialy selected list, where 'dragstart' event was triggered
    * It allows us to move the data in between individual Sortable List instances
@@ -796,8 +774,6 @@ var sortable = (function () {
       // remove event handlers & data from sortable
       removeEventListener(sortableElement, 'dragover');
       removeEventListener(sortableElement, 'dragenter');
-      removeEventListener(sortableElement, 'dragstart');
-      removeEventListener(sortableElement, 'dragend');
       removeEventListener(sortableElement, 'drop');
       // remove event data from sortable
       _removeSortableData(sortableElement);
@@ -805,8 +781,6 @@ var sortable = (function () {
       removeEventListener(handles, 'mousedown');
       _removeItemEvents(items);
       _removeItemData(items);
-      // clear sortable flag
-      sortableElement.isSortable = false;
   };
   /**
    * Enable the sortable
@@ -902,7 +876,7 @@ var sortable = (function () {
           }
           // log deprecation
           ['connectWith', 'disableIEFix'].forEach(function (configKey) {
-              if (Object.prototype.hasOwnProperty.call(options, configKey) && options[configKey] !== null) {
+              if (options.hasOwnProperty(configKey) && options[configKey] !== null) {
                   console.warn("HTML5Sortable: You are using the deprecated configuration \"" + configKey + "\". This will be removed in an upcoming version, make sure to migrate to the new options when updating.");
               }
           });
@@ -970,7 +944,6 @@ var sortable = (function () {
               setDragImage(e, dragItem, options.customDragImage);
               // cache selsection & add attr for dragging
               draggingHeight = _getElementHeight(dragItem);
-              draggingWidth = _getElementWidth(dragItem);
               dragItem.classList.add(options.draggingClass);
               dragging = _getDragging(dragItem, sortableContainer);
               addAttribute(dragging, 'aria-grabbed', 'true');
@@ -1050,7 +1023,6 @@ var sortable = (function () {
               previousContainer = null;
               dragging = null;
               draggingHeight = null;
-              draggingWidth = null;
           });
           /*
            * Drop Event - https://developer.mozilla.org/en-US/docs/Web/Events/drop
@@ -1123,37 +1095,30 @@ var sortable = (function () {
                   }));
               }
           });
-          var debouncedDragOverEnter = _debounce(function (sortableElement, element, pageX, pageY) {
+          var debouncedDragOverEnter = _debounce(function (sortableElement, element, pageY) {
               if (!dragging) {
                   return;
               }
               // set placeholder height if forcePlaceholderSize option is set
               if (options.forcePlaceholderSize) {
                   store(sortableElement).placeholder.style.height = draggingHeight + 'px';
-                  store(sortableElement).placeholder.style.width = draggingWidth + 'px';
               }
               // if element the draggedItem is dragged onto is within the array of all elements in list
               // (not only items, but also disabled, etc.)
               if (Array.from(sortableElement.children).indexOf(element) > -1) {
                   var thisHeight = _getElementHeight(element);
-                  var thisWidth = _getElementWidth(element);
                   var placeholderIndex = _index(store(sortableElement).placeholder, element.parentElement.children);
                   var thisIndex = _index(element, element.parentElement.children);
                   // Check if `element` is bigger than the draggable. If it is, we have to define a dead zone to prevent flickering
-                  if (thisHeight > draggingHeight || thisWidth > draggingWidth) {
+                  if (thisHeight > draggingHeight) {
                       // Dead zone?
-                      var deadZoneVertical = thisHeight - draggingHeight;
-                      var deadZoneHorizontal = thisWidth - draggingWidth;
+                      var deadZone = thisHeight - draggingHeight;
                       var offsetTop = _offset(element).top;
-                      var offsetLeft = _offset(element).left;
-                      if (placeholderIndex < thisIndex &&
-                          ((options.orientation === 'vertical' && pageY < offsetTop) ||
-                              (options.orientation === 'horizontal' && pageX < offsetLeft))) {
+                      if (placeholderIndex < thisIndex && pageY < offsetTop) {
                           return;
                       }
                       if (placeholderIndex > thisIndex &&
-                          ((options.orientation === 'vertical' && pageY > offsetTop + thisHeight - deadZoneVertical) ||
-                              (options.orientation === 'horizontal' && pageX > offsetLeft + thisWidth - deadZoneHorizontal))) {
+                          pageY > offsetTop + thisHeight - deadZone) {
                           return;
                       }
                   }
@@ -1168,10 +1133,8 @@ var sortable = (function () {
                   // vertical center.
                   var placeAfter = false;
                   try {
-                      var elementMiddleVertical = _offset(element).top + element.offsetHeight / 2;
-                      var elementMiddleHorizontal = _offset(element).left + element.offsetWidth / 2;
-                      placeAfter = (options.orientation === 'vertical' && (pageY >= elementMiddleVertical)) ||
-                          (options.orientation === 'horizontal' && (pageX >= elementMiddleHorizontal));
+                      var elementMiddle = _offset(element).top + element.offsetHeight / 2;
+                      placeAfter = pageY >= elementMiddle;
                   }
                   catch (e) {
                       placeAfter = placeholderIndex < thisIndex;
@@ -1222,7 +1185,7 @@ var sortable = (function () {
               e.preventDefault();
               e.stopPropagation();
               e.dataTransfer.dropEffect = store(sortableElement).getConfig('copy') === true ? 'copy' : 'move';
-              debouncedDragOverEnter(sortableElement, element, e.pageX, e.pageY);
+              debouncedDragOverEnter(sortableElement, element, e.pageY);
           };
           addEventListener(listItems.concat(sortableElement), 'dragover', onDragOverEnter);
           addEventListener(listItems.concat(sortableElement), 'dragenter', onDragOverEnter);
