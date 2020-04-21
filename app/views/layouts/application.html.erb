@@ -19,10 +19,16 @@
     <div class="site-wrapper">
       <div class="site-wrapper-inner">
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" >
-          <!-- <p class="notice"><%= notice %></p> 
-          <p class="alert"><%= alert %></p> -->
-
-          <div id="background"></div>
+          
+          <%= video_tag(
+            'mallorca-warmup-run-cut1.mp4',
+            id: 'background',
+            autoplay: true,
+            loop: true,
+            muted: true,
+            #poster: 'KTT-team2019-cut.jpg'
+            )
+            %>
           <%= render "shared/application_nav" %>
 
           <%= yield %>
