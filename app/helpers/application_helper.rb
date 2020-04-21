@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def set_copyright
-    VerasViewTool::Renderer.copyright 'Kaifu Tri Team', 'Do what you love. Together.'
+    VerasViewTool::Renderer.copyright 'Kaifu Tri Team e. V.', 'Do what you love. Together.'
   end
 
   def nav_items
