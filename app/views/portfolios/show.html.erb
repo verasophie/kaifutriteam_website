@@ -1,9 +1,9 @@
 <div class="container portfolio-container">
   <div class="row">
-    <div class="rol-md-7">
+    <div class="col-md-7">
       <%= image_tag portfolio_img(@portfolio_item.main_image.url, 'main'), width: '100%' %> 
     </div>
-    <div class="rol-md-5">
+    <div class="col-md-5">
       <h1><%= @portfolio_item.title %></h1>
       <hr>
       <em><%= @portfolio_item.subtitle %></em>
@@ -11,11 +11,16 @@
       <hr>
       <h2>Technologies Used:</h2>
       <% @portfolio_item.technologies.each do |t| %>
-      <p><%= t.name %></p>
+        <p><%= t.name %></p>
+      <% end %>
+
+      <% if logged_in?(:site_admin) %>
+        <div>
+          <%= link_to "edit", edit_portfolio_path(@portfolio_item), class: 'btn btn-secondary' %>
+        </div>
       <% end %>
     </div>
   </div>
 </div>
 
-<% #show ActionController::Parameters 'What is going on in the background?' Controller takes ID from URL (routes.rb), calls show action, passes it to @portfolio_item (portf_controller.rb) which is called in show.html.erb  %>
-<% #= params.inspect %>
+<!-- #show ActionController::Parameters 'What is going on in the background?' Controller takes ID from URL (routes.rb), calls show action, passes it to @portfolio_item (portf_controller.rb) which is called in show.html.erb 'params.inspect' -->
