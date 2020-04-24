@@ -17,7 +17,7 @@
       </div>
       <div class="form-group">
         <label class="btn btn-secondary">
-          Titelbild <%= form.file_field :main_image %>
+          Titelbild <%= form.file_field :main_image, style:'display:none;' %>
         </label>
       </div>
       <div class="form-group">
@@ -38,7 +38,7 @@
     <h2>Stärken</h2>
     <div>
       <%= form.fields_for :technologies do |technology_form| %>
-        <%= render "technology_fields", form: technology_form %>
+        <%= render "technology_fields", f: technology_form %>
         <% end %>
       <div>
         <%= link_to_add_association 'Disziplin hinzufügen', form, :technologies %>
