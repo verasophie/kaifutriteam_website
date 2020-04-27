@@ -39,7 +39,8 @@
     <div>
       <%= form.fields_for :technologies do |technology_form| %>
         <%= render "technology_fields", f: technology_form %>
-        <% end %>
+      <% end %>
+
       <div>
         <%= link_to_add_association 'Disziplin hinzufügen', form, :technologies %>
       </div>
