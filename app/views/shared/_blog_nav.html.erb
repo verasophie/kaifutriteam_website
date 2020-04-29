@@ -1,8 +1,29 @@
-<div class="container">
-  <div class="nav-scroller py-2 mb-4">
-    <nav class="nav d-flex justify-content-between">
-      <%= nav_helper "p-1 text-muted", "span" %>
-      <%= login_helper "btn btn-outline-secondary btn-sm pb-1" %>
-    </nav>
+<nav class="collapse bg-light" id="navbarHeader">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-md-7 py-4">
+        <h4 class="text-muted">News</h4>
+        <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+      </div>
+      <div class="col-sm-4 offset-md-1 py-4">
+        <ul class="list-unstyled">
+          <h4 class="text-muted">Menü</h4>
+          <%= nav_helper "text-muted", "li"%>
+          <li><%= link_to "Neuer Beitrag", new_blog_path, class: "text-muted" if logged_in?(:site_admin) %></li>
+          <li><%= login_helper 'text-muted' %></li>
+        </ul>
+      </div>
+    </div>
   </div>
-</div>
+</nav>
+<nav class="navbar navbar-light bg-light" style="background-color: #e3f2fd;">
+  <div class="container d-flex justify-content-between">
+    <a href="/" class="navbar-brand d-flex align-items-center text-muted">
+      <%= image_tag "Kaifutriteamlogo-4.png", class: "ktt-button"%>
+      <strong>Kaifu Tri Team</strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-muted"></span>
+    </button>
+  </div>
+</nav>
