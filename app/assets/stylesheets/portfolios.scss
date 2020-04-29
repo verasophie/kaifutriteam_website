@@ -29,6 +29,7 @@
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 footer p {
@@ -38,7 +39,12 @@ footer p {
 /* Custom styles */
 
 .portfolio-container {
-  padding-top: 30px
+  padding-top: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.portfolio-font {
+  font-family: 'Raleway', sans-serif;
 }
 
 .img-responsive {
