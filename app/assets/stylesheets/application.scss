@@ -1,4 +1,5 @@
 @import "bootstrap/scss/bootstrap.scss";
+@import "jquery-ui";
 @import "gritter";
 
 /*
@@ -182,5 +183,11 @@ body {
 }
 
 .app-card-container a {
+  color: white;
+}
+
+.collapsable-card {
+  background: none;
+  border: none;
   color: white;
 }
