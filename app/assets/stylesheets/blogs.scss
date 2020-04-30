@@ -5,12 +5,14 @@
 /* stylelint-disable selector-list-comma-newline-after */
 
 .blog-header {
-  line-height: 1;
-  border-bottom: 1px solid #e5e5e5;
+  line-height: 2;
+  margin-bottom: 50px;
+  margin-left: 50px;
+  /* border-bottom: 1px solid #e5e5e5; */
 }
 
 .blog-header-logo {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: 'Raleway', sans-serif;
   font-size: 2.25rem;
 }
 
@@ -19,7 +21,7 @@
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .display-4 {
@@ -83,11 +85,13 @@ h1, h2, h3, h4, h5, h6 {
 /*
  * Blog posts
  */
+
 .blog-post {
   margin-bottom: 4rem;
 }
 .blog-post-title {
   margin-bottom: .25rem;
+  font-family: 'Raleway', sans-serif;
   font-size: 2.5rem;
 }
 .blog-post-meta {
@@ -99,14 +103,16 @@ h1, h2, h3, h4, h5, h6 {
  * Footer
  */
 .blog-footer {
-  padding: 2.5rem 0;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  font-family: 'Raleway', sans-serif;
   color: #999;
-  text-align: center;
+  text-align: left;
   background-color: #f9f9f9;
   border-top: .05rem solid #e5e5e5;
 }
 .blog-footer p:last-child {
-  margin-bottom: 0;
+  margin-bottom: 3;
 }
 /*
 * Custom styles
@@ -114,4 +120,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .social-links li {
   font-size: 2em;
+}
+
+.blogcrumb a {
+  font-size: 1.25em;
+  margin: 0px 10px 0px 10px;
+}
+
+.ktt-button {
+  width: 40px;
+  margin-right: 10px;
 }

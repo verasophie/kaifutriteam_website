@@ -1,8 +1,11 @@
-<footer class="blog-footer">
-  <p>
-    <%= set_copyright %>
-  </p>
-  <p>
-    <a href="#">move up</a>
-  </p>
+<footer class="blog-footer text-muted">
+  <div class="container">
+    <p class="float-right">
+      <%= link_to "zurück zur Übersicht", blogs_path %> /
+      <a href="#">move up</a>
+    </p>
+    <p>
+      <%= set_copyright %>
+    </p>
+  </div>
 </footer>

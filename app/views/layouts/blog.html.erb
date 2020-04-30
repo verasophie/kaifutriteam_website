@@ -9,6 +9,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    
     <meta name="keywords" content="<%= @seo_keywords %>" />
 
     <%= stylesheet_link_tag 'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -16,17 +18,16 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "shared/blog_nav", class: 'p-4' %>
-      <%= render "shared/blog_masthead" %>
-      
+    <%= render "shared/blog_nav", class: 'p-4' %>
+    <%= render "shared/blog_masthead" %>
+    <div class="container">  
       <div class="row">   
         <%= yield %>
         <%= render 'shared/blog_sidebar' %>
       </div>
-      <%= render 'shared/blog_footer' %>
-      <%= source_helper("blog") %>
-      <%= render "shared/alerts" %>
     </div>
+    <%= render 'shared/blog_footer' %>
+    <%= source_helper("blog") %>
+    <%= render "shared/alerts" %>
   </body>
 </html>

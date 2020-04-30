@@ -1,13 +1,76 @@
-<main role="main" class="center-block">
-  <div class="row">
-    <div class="col-md-6">
-      <h1>Kontakt</h1>
-      <p><a href="mailto: info@kaifu-tri-team.de" "Email">Schreib uns eine Mail!</a></p>
-      <p> ...oder triff uns in unserer Home Base, der KAIFU-LODGE </p>
-    </div>
-    <div class="col-md-6">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9476.812797011802!2d9.9635701!3d53.57199!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xce6f9a56d7a7e68c!2sKaifu-Lodge!5e0!3m2!1sen!2sde!4v1586791367908!5m2!1sen!2sde" width="350" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-    </div>
+<div class="app-card-container">
+  <%= image_tag('mallorca-run.JPG', id: 'background')%>
+  <div class="card">
+    <main role="main" class="center-block">
+      <div class="row">
+        <div class="col-md-7">
+          <h1>Kontakt</h1>
+          <p><a href="mailto: info@kaifu-tri-team.de">Schreib uns eine Mail!</a></p>
+          <p> ...oder triff uns in unserer Home Base, der KAIFU-LODGE </p>
+          <p>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-toggle="collapse"
+              data-target="#swim"
+              aria-expanded="false"
+              aria-controler="swim"
+            >
+              Schwimmtraining
+            </button>
+          </p>
+          <p>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-toggle="collapse"
+              data-target="#bike"
+              aria-expanded="false"
+              aria-controler="bike"
+            >
+              Radtraining
+            </button>
+          </p>
+          <p>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              data-toggle="collapse"
+              data-target="#run"
+              aria-expanded="false"
+              aria-controler="run"
+            >
+              Lauftraining
+            </button>
+          </p>
+          <p>
+            <div class="collapse" id="swim">
+              <div class="card collapsable-card">
+                Kaifu-Bad - dienstags und donnerstags, 21 Uhr
+              </div>
+              <div class="card collapsable-card">
+                Festland - montags, 20 Uhr
+              </div>
+              <div class="card collapsable-card">
+                Bäderland Ohlsdorf - freitags, 20 Uhr
+              </div>
+            </div>
+            <div class="collapse" id="bike">
+              <div class="card collapsable-card">
+                nach Absprache, Ansprechpartner Lukas Kuntermann
+              </div>
+            </div>
+            <div class="collapse" id="run">
+              <div class="card collapsable-card">
+                Stadtpark/Jahnkampfbahn - mittwochs, 19:15 Uhr
+              </div>
+            </div>
+          </p>
+        </div>
+        <div class="col-md-5">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9476.812797011802!2d9.9635701!3d53.57199!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xce6f9a56d7a7e68c!2sKaifu-Lodge!5e0!3m2!1sen!2sde!4v1586791367908!5m2!1sen!2sde" width="310" height="350" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </div>
+    </main>
   </div>
-</main>
-
+</div>
