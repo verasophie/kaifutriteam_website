@@ -18,17 +18,16 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render "shared/blog_nav", class: 'p-4' %>
-      <%= render "shared/blog_masthead" %>
-      
+    <%= render "shared/blog_nav", class: 'p-4' %>
+    <%= render "shared/blog_masthead" %>
+    <div class="container">  
       <div class="row">   
         <%= yield %>
         <%= render 'shared/blog_sidebar' %>
       </div>
-      <%= render 'shared/blog_footer' %>
-      <%= source_helper("blog") %>
-      <%= render "shared/alerts" %>
     </div>
+    <%= render 'shared/blog_footer' %>
+    <%= source_helper("blog") %>
+    <%= render "shared/alerts" %>
   </body>
 </html>
