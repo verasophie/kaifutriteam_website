@@ -43,11 +43,6 @@ class PortfoliosController < ApplicationController
   def show
   end
 
-  def move
-    @portfolio_item.insert_at(params[:position].to_i)
-    head :ok
-  end
-
   def destroy
     # Perform the lookup
     @title = @portfolio_item.title
