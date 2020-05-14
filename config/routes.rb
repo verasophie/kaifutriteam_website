@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register' }
-  resources :portfolios, except: [:show]
+  resources :portfolios, except: [:show] do
+    member do
+      patch :move
+    end
+  end
   get 'python-items', to: 'portfolios#python'
   get 'portfolio/:id', to: 'portfolios#show', as: 'portfolio_show'
 

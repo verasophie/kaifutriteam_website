@@ -1,6 +1,6 @@
 <div class="album py-5 bg-light">
   <div class="container">
-    <div id="portfolios" class="row sortable">
+    <div id="portfolios" class="row sortable" data-controller="drag" data-drag-url="/portfolio/:id/move" data-id="<%= portfolio_items.id %>">
       <% # manually say, that it's a partial; collection tells Rails the type %>
       <%= render partial: 'portfolio_item', collection: @portfolio_items %>
     </div>

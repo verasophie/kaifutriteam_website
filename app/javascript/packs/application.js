@@ -14,3 +14,5 @@ require("bootstrap")
 require('cocoon-js');
 
 Rails.start();
+
+import "controllers"
