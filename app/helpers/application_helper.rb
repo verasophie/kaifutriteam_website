@@ -9,15 +9,8 @@ module ApplicationHelper
     end
   end
 
-  def source_helper(layout_name)
-    if session[:source]
-      greeting = "Thanks for heading over from #{session[:source]} and you are on the #{layout_name} layout"
-      content_tag(:p, greeting, class: "source-greeting")      
-    end
-  end
-
   def set_copyright
-    VerasViewTool::Renderer.copyright 'Kaifu Tri Team e. V.', 'Do what you love. Together.'
+    VerasViewTool::Renderer.copyright "Kaifu Tri Team e. V.", "Do what you love. Together."
   end
 
   def nav_items
@@ -26,22 +19,22 @@ module ApplicationHelper
         url: root_path,
         title: 'Home'
       },
-            {
+      {
         url: about_me_path,
         title: 'Über uns'
       },
-            {
+      {
         url: contact_path,
         title: 'Kontakt'
-      },
-            {
-        url: blogs_path,
-        title: 'News'
-      },
-            {
-        url: portfolios_path,
-        title: 'Teams'
-      },
+      }
+      # {
+      #   url: blogs_path,
+      #   title: 'News'
+      # },
+      # {
+      #   url: portfolios_path,
+      #   title: 'Teams'
+      # }
     ]
   end
 
