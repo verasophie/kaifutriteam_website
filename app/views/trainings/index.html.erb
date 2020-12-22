@@ -1,0 +1,28 @@
+<%= javascript_include_tag "trainings" %>
+<div class="app-card-container">
+  <%= image_tag('mallorca-run.JPG', id: 'background')%>
+  <div class="card">
+    <main role="main" class="center-block">
+      <div class ="row">
+       
+        <div class="col-md-12">
+          <h1>TRAININGS</h1>
+          <div class="js-newTraining">
+            <%= form_with model: Training.new do |f| %>
+              <div class="Form-element">
+                <div class="Input u-mb-3">
+                  <%= f.label :starts_at, class: "Input-label" %>
+                  <%= f.text_field :starts_at, class: "Input-element", id: "starts_at" %>
+                </div>
+                <div class="Input u-mb-3">
+                  <%= f.label :description, class: "Input-label" %>
+                  <%= f.text_area :description, class: "Input-element" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

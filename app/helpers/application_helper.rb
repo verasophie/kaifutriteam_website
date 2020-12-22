@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
   def login_helper style = ''
     if current_user.is_a? GuestUser
@@ -18,6 +20,10 @@ module ApplicationHelper
       {
         url: root_path,
         title: 'Home'
+      },
+      {
+        url: trainings_path,
+        title: 'Trainings'
       },
       {
         url: about_me_path,
@@ -42,7 +48,7 @@ module ApplicationHelper
     nav_links = ''
 
     nav_items.each do |item|
-      nav_links << "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}'>#{item[:title]}</a></#{tag_type}>"
+      nav_links += "<#{tag_type}><a href='#{item[:url]}' class='#{style} #{active? item[:url]}'>#{item[:title]}</a></#{tag_type}>"
     end
     nav_links.html_safe
   end
